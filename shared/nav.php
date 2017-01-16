@@ -16,13 +16,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#students">Students</a>
+                        <a href="students.php">Students</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#volonteers">Volonteers</a>
+                        <a href="volonteers.php">Volonteers</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">Contact</a>
+                        <a href="contact.php">Contact</a>
                     </li>
                 </ul>
             </div>

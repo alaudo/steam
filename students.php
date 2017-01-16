@@ -12,8 +12,9 @@
 <body id="page-top" class="index">
 
     <?php
-        include 'shared\nav.php';
-        include 'logic\main.php';
+        //include 'shared\nav.php';
+        include 'logic\connect.php';
+        include 'logic\reg_students.php';
         include 'shared\footer.php';
         include 'shared\scripts.php';
     ?>
