@@ -40,6 +40,11 @@
         }
 
         public static function enrich(&$student) {
+            
+            if (isset($student["email"]) && isset($student["name_first"]) && isset($student["name_last"])) {
+                $student["showstep2"] = true;
+            }
+
             if (isset($student["class"])) {
                 $query = mysql_query("SELECT * FROM Classroom WHERE ID =" . $student["class"] );
                 $student["grade"] = mysql_result($query,0,"Grade");
@@ -72,6 +77,17 @@
                 } else {
                     $student["is_parent_workshop"] = false;
                 }
+
+            if (isset($student["grade"])) {
+                $query = mysql_query("SELECT ID FROM Workshop WHERE Grade =" . $student["grade"] );
+                $workshops = array();
+                while ($row = mysql_fetch_array($query)) {
+                    $workshops[$row["ID"]] = utils::getworkshop($row["ID"]);
+
+                }
+                $student["workshops"] = $workshops;
+            }
+                
 
 
             }

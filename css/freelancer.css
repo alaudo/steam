@@ -28,7 +28,7 @@ h4,
 h5,
 h6 {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   font-weight: 700;
 }
 hr.star-light,
@@ -503,3 +503,29 @@ fieldset[disabled] .btn-success.active {
   opacity: 0;
   display: none;
 }
+
+.inbutton {
+  margin-right:15px;
+  margin-top:15px;
+}
+
+ /* jQueryUI Sortable */
+
+#sortable > div {
+    border-top: 1px solid transparent;
+}
+
+#sortable .panel {
+    margin-top:0.3em;
+    margin-bottom: 0.4em;
+}
+
+.placeholder {
+    border: 1px solid green;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 10px #888;
+    -moz-box-shadow: 0px 0px 10px #888;
+    box-shadow: 0px 0px 10px #888;
+    height:50px;
+}
+  
