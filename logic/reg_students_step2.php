@@ -12,7 +12,10 @@
         <?php
             if ($student["is_parent_workshop"]) {
                 include("reg_students_parentworkshop.php");
+            } else  {
+                include("reg_students_noparentworkshop.php");
             }
+
         ?>
         <div class="row control-group">
             <div class="form-group col-xs-12 floating-label-form-group controls <?php utils::ifset($student,'allergy','floating-label-form-group-with-value'); ?>">
@@ -24,7 +27,7 @@
         <?php
         if (isset($student["workshops"])) {
             include("reg_students_workshops.php");
-        }
+        }           
         ?>  
 
 
