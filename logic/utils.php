@@ -4,10 +4,10 @@
    
     class utils {
         // mapping from one array to another using rules
-        public static function map($from, $rules) {
+        public static function map($from, $rules, $con) {
             $ret = array();
             foreach($rules as $key => $value) {
-                if (isset($from[$key])) $ret[$value] = $from[$key];
+                if (isset($from[$key])) $ret[$value] = mysqli_real_escape_string($con, $from[$key]);
             }
             return $ret;
         }
@@ -79,13 +79,28 @@
                 }
 
             if (isset($student["grade"])) {
-                $query = mysql_query("SELECT ID FROM Workshop WHERE Grade =" . $student["grade"] );
-                $workshops = array();
-                while ($row = mysql_fetch_array($query)) {
-                    $workshops[$row["ID"]] = utils::getworkshop($row["ID"]);
-
+                    
+                if (isset($student["workshopsorder"]) && $student["workshopsorder"] != '') {
+                    $i = 1;
+                    $workshops = array();
+                    foreach (explode('&',$student["workshopsorder"]) as $foo) {
+                        $id = intval(explode('=',$foo)[1]);
+                        $workshops[$i] = utils::getworkshop($id);
+                        $i++;
+                    }
+                    $student["workshops"] = $workshops;
+                
+                } else {
+                    $query = mysql_query("SELECT ID FROM Workshop WHERE Grade =" . $student["grade"] );
+                    $workshops = array();
+                    $workshops[1] = utils::getworkshopseparator();
+                    $i = 2;
+                    while ($row = mysql_fetch_array($query)) {
+                        $workshops[$i] = utils::getworkshop($row["ID"]);
+                        $i++;
+                    }
+                    $student["workshops"] = $workshops;
                 }
-                $student["workshops"] = $workshops;
             }
                 
 
@@ -94,6 +109,7 @@
         }
 
         public static function getworkshop($id) {
+            if ($id == 0) return utils::getworkshopseparator();
             $workshop = mysql_query("SELECT * FROM Workshop WHERE ID =" . $id);
             if (mysql_num_rows($workshop) > 0) {
                 $w = array();
@@ -101,12 +117,27 @@
                 $w["grade"] = mysql_result($workshop,0,"Grade");
                 $w["title"] = mysql_result($workshop,0,"Title");
                 $w["description"] = mysql_result($workshop,0,"Description");
+                $w["css"] = "panel-primary";
                 return $w;
             }
         }
         
+ 
+        public static function getworkshopseparator() {
+            $w = array();
+            $w["id"] = 0;
+            $w["grade"] = 0;
+            $w["title"] = "No more workshops ### (workshops separator)";
+            $w["description"] = "Drag all workshops you want to attend above this separator. This element should be after the last workshop you would like to attend. All workshops below this elements will be discarded from your choice.";
+            $w["css"] = "panel-default";
+            return $w;
+        }       
         
-        
+
+        public static function savestudent(&$student, $con) {
+           $insert = "INSERT INTO `Students`(`Grade`, `StudentLast`, `StudentFirst`, `Teacher`, `S1`, `S2`, `S3`, `S4`, `S5`, `S6`, `Regdate`, `RegIP`, `ParentVolunteer`, `childworkshop`, `Allergy`, `parentName`, `ParentFirst`, `ParentLast`, `Email`) 
+                                   VALUES ('{$student['name_first']}', '{$student['name_last']}', '{$student['name_first']}','{$student['teacher']}','{$student['workshops'][1]['id']}','{$student['workshops'][2]['id']}','{$student['workshops'][3]['id']}','{$student['workshops'][4]['id']}','{$student['workshops'][5]['id']}','{$student['workshops'][6]['id']}',{},[value-11],[value-12],[value-13],[value-14],[value-15],[value-16],[value-17],[value-18],[value-19],[value-20],[value-21],[value-22],[value-23],[value-24],[value-25])"; 
+        }
 
     }
 

@@ -36,7 +36,7 @@
 </div>
 <div class="row">
     <div class="form-group col-xs-12 controls clearfix">
-        <button type="submit" class="btn btn-success btn-lg pull-right inbutton">Save preferences</button>
+        <button type="submit" name="save" class="btn btn-success btn-lg pull-right inbutton">Save preferences</button>
     </div>
 </div>
 

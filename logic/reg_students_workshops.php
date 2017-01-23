@@ -8,8 +8,8 @@
                     <?php
                             foreach($student["workshops"] as &$w) {
                                 echo '<div id="w_'.$w["id"]. '" class="col-xs-12">';
-                                echo '  <div class="panel panel-primary">';
-                                echo '    <div class="panel-heading"> #'. $w["id"] . ': ' . $w["title"] . '</div>';
+                                echo '  <div class="panel '. $w["css"] .'">';
+                                echo '    <div class="panel-heading"> #'. (($w["id"] > 0) ? $w["id"] . ':' : '##') . $w["title"] . '</div>';
                                 echo '    <div class="panel-body">'. $w["description"] . '</div>';
                                 echo '  </div>';
                                 echo '</div>';
@@ -33,5 +33,7 @@
                             }
                 });
                      $("#sortable").disableSelection();
+                     var data = $("#sortable").sortable('serialize');
+                     $("#workshopsorder").val(data);
                 });
         </script>

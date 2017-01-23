@@ -70,15 +70,13 @@
                             <br>
                             <div id="success">
                             <?php
-                               if ($_GET["debug"]) {
                                    var_dump($student);
-                               }
                             ?>
                             </div>
 
                             <div class="row">
                                 <div class="form-group col-xs-12 clearfix">
-                                    <button type="submit" class="btn btn-warning btn-lg inbutton pull-right">
+                                    <button type="submit" name="load" class="btn btn-warning btn-lg inbutton pull-right">
                                             <?php
                                                 if (!isset($student["showstep2"])) {
                                                     echo 'Login or register';
