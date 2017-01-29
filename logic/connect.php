@@ -1,10 +1,13 @@
  <?php 
+        // timezone 
+        date_default_timezone_set('America/Los_Angeles');
         // including utils
         require_once("utils.php");
 
         $username="phpreader";
         $password="ReadOnly1";
         $database="Laurel";
+        $error = "";
         
         $con = mysql_connect(localhost,$username,$password);
         @mysql_select_db($database) or die( "Unable to select database");
@@ -27,9 +30,15 @@
         utils::enrich($student);
 
         if (isset($student["save"])) {
-            // saving $student
-            utils::savestudent($student, $con);
-        }
+            $retval = utils::savestudent($student,$con);
+
+            if(! $retval ) {
+               $error = var_dump(mysql_error());
+            } else {
+               $student["updated"] = "Saved your data at " . date("Y-m-d h:i:sa"); 
+            }
+
+        } 
         
 
 

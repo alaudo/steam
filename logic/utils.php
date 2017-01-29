@@ -7,7 +7,7 @@
         public static function map($from, $rules, $con) {
             $ret = array();
             foreach($rules as $key => $value) {
-                if (isset($from[$key])) $ret[$value] = mysqli_real_escape_string($con, $from[$key]);
+                if (isset($from[$key])) $ret[$value] = $from[$key];
             }
             return $ret;
         }
@@ -40,7 +40,9 @@
         }
 
         public static function enrich(&$student) {
-            
+
+            $student["ip"] = $_SERVER['REMOTE_ADDR'];
+
             if (isset($student["email"]) && isset($student["name_first"]) && isset($student["name_last"])) {
                 $student["showstep2"] = true;
             }
@@ -50,6 +52,7 @@
                 $student["grade"] = mysql_result($query,0,"Grade");
                 $student["room"] = mysql_result($query,0,"Room");
                 $student["teacher"] = mysql_result($query,0,"Teacher");
+                $student["teacherid"] = mysql_result($query,0,"ID");
             }
 
             if (isset($student["email"])) {
@@ -135,8 +138,16 @@
         
 
         public static function savestudent(&$student, $con) {
-           $insert = "INSERT INTO `Students`(`Grade`, `StudentLast`, `StudentFirst`, `Teacher`, `S1`, `S2`, `S3`, `S4`, `S5`, `S6`, `Regdate`, `RegIP`, `ParentVolunteer`, `childworkshop`, `Allergy`, `parentName`, `ParentFirst`, `ParentLast`, `Email`) 
-                                   VALUES ('{$student['name_first']}', '{$student['name_last']}', '{$student['name_first']}','{$student['teacher']}','{$student['workshops'][1]['id']}','{$student['workshops'][2]['id']}','{$student['workshops'][3]['id']}','{$student['workshops'][4]['id']}','{$student['workshops'][5]['id']}','{$student['workshops'][6]['id']}',{},[value-11],[value-12],[value-13],[value-14],[value-15],[value-16],[value-17],[value-18],[value-19],[value-20],[value-21],[value-22],[value-23],[value-24],[value-25])"; 
+           $parent = $student['parent_first'] . " " . $student['parent_last'];
+           $pworkshop = $student["is_parent_workshop"] ? $student["parent_workshop"]["workshop"]["id"]: '0';
+           $pvolonteer = $student['is_parent_workshop'] ? "1" : "0";
+
+           $insert = "INSERT INTO `Students`(`Grade`, `StudentLast`, `StudentFirst`, `Teacher`, `S1`, `S2`, `S3`, `S4`, `S5`, `S6`, `Regdate`, `RegIP`, `ParentVolunteer`, `parentwork`, `Allergy`, `parentName`, `ParentFirst`, `ParentLast`, `Email`) " .
+                                "VALUES ('{$student['grade']}', '{$student['name_last']}', '{$student['name_first']}','{$student['teacherid']}','{$student['workshops'][1]['id']}','{$student['workshops'][2]['id']}','{$student['workshops'][3]['id']}','{$student['workshops'][4]['id']}'," . 
+                                "'{$student['workshops'][5]['id']}','{$student['workshops'][6]['id']}',now(),'{$student['ip']}','{$pvolonteer}'," . 
+                                "{$pworkshop},'{$student['allergy']}','{$parent}','{$student['parent_first']}','{$student['parent_last']}','{$student['email']}')"; 
+
+           return mysql_query( $insert, $con );;                    
         }
 
     }
