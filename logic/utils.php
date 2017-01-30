@@ -56,7 +56,8 @@
             }
 
             if (isset($student["email"])) {
-                $query = mysql_query("SELECT * FROM Volunteers WHERE Email ='" . $student["email"] . "'" );
+                // -------  loading parent data ------ 
+                $query = mysql_query("SELECT * FROM Volunteers WHERE Email ='{$student['email']}'" );
                 // if email is not valid, trying to match names
                 if (mysql_numrows($query) < 1) $query = mysql_query("SELECT * FROM Volunteers WHERE Grade ='" . $student["grade"] . "' AND First='" . $student["parent_first"] ."' AND Last ='". $student["parent_last"] ."'" );
 
@@ -76,39 +77,69 @@
                     $workshop["email"] = mysql_result($query,0,"email");
 
                     $student["parent_workshop"] = $workshop;
-
                 } else {
                     $student["is_parent_workshop"] = false;
                 }
 
-            if (isset($student["grade"])) {
+                if (isset($student["load"])) {
+                    // loading from db
+                    $query = mysql_query("SELECT * FROM `Students` WHERE Email = '{$student['email']}' ORDER BY ID DESC LIMIT 1");
+                    // if email is not valid, trying to match names
+                    if (mysql_numrows($query) < 1) $query = mysql_query("SELECT * FROM Students WHERE Grade ='{$student['grade']}' AND ParentFirst='{$student['parent_first']}' AND ParentFirst='{$student['parent_first']}'" );
+
+                    if (mysql_numrows($query) > 0) {
+                    // there is an entry in the db
+                        var $ws =  utils::getworkshops($student["grade"]);
+                        foreach(range(1,6) as $num) {
+                            utils::swapworkshop($ws,$num,mysql_result($query,0,"S" . $num))
+                        }
+
+                    } else {
+                    // creating new student
+
+                    }
+
                     
-                if (isset($student["workshopsorder"]) && $student["workshopsorder"] != '') {
-                    $i = 1;
-                    $workshops = array();
-                    foreach (explode('&',$student["workshopsorder"]) as $foo) {
-                        $id = intval(explode('=',$foo)[1]);
-                        $workshops[$i] = utils::getworkshop($id);
-                        $i++;
-                    }
-                    $student["workshops"] = $workshops;
-                
-                } else {
-                    $query = mysql_query("SELECT ID FROM Workshop WHERE Grade =" . $student["grade"] );
-                    $workshops = array();
-                    $workshops[1] = utils::getworkshopseparator();
-                    $i = 2;
-                    while ($row = mysql_fetch_array($query)) {
-                        $workshops[$i] = utils::getworkshop($row["ID"]);
-                        $i++;
-                    }
-                    $student["workshops"] = $workshops;
+
+
                 }
-            }
-                
 
 
+                if (isset($student["grade"])) {
+                        
+                    if (isset($student["workshopsorder"]) && $student["workshopsorder"] != '') {
+                        $i = 1;
+                        $workshops = array();
+                        foreach (explode('&',$student["workshopsorder"]) as $foo) {
+                            $id = intval(explode('=',$foo)[1]);
+                            $workshops[$i] = utils::getworkshop($id);
+                            $i++;
+                        }
+                        $student["workshops"] = $workshops;
+                    
+                    } else {
+                        $student["workshops"] = utils::getworkshops($student["grade"]);
+                    }
+                }
+
             }
+        }
+
+        public static function swapworkshop(&$workshops,$pos, $id) {
+
+        }
+
+
+        public static function getworkshops($grade) {
+            $query = mysql_query("SELECT ID FROM Workshop WHERE Grade =" . $student["grade"] );
+            $workshops = array();
+            $workshops[1] = utils::getworkshopseparator();
+            $i = 2;
+            while ($row = mysql_fetch_array($query)) {
+                $workshops[$i] = utils::getworkshop($row["ID"]);
+                $i++;
+            }
+            return $workshops;
         }
 
         public static function getworkshop($id) {
