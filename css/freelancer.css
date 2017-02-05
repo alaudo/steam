@@ -509,6 +509,18 @@ fieldset[disabled] .btn-success.active {
   margin-top:15px;
 }
 
+ /* Panel colors */
+
+ .loaded {
+    background: green;
+    color: white;
+}
+
+ .created {
+    background: #a94442;
+    color: white;
+}
+
  /* jQueryUI Sortable */
 
 #sortable > div {

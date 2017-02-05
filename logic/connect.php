@@ -11,6 +11,7 @@
         
         $con = mysql_connect(localhost,$username,$password);
         @mysql_select_db($database) or die( "Unable to select database");
+        mysql_query("set names 'utf8'");
 
         // trying to get data from post
         $student_rules = array(
@@ -27,18 +28,32 @@
             "load" => "load");
 
         $student = utils::map($_POST,$student_rules,$con);
-        utils::enrich($student);
+
+        utils::enrich($student); 
 
         if (isset($student["save"])) {
+            // parsing workshops         
+            if (isset($student["workshopsorder"]) && $student["workshopsorder"] != '') {
+                $i = 1;
+                $workshops = array();
+                foreach (explode('&',$student["workshopsorder"]) as $foo) {
+                    $id = intval(explode('=',$foo)[1]);
+                    $workshops[$i] = utils::getworkshop($id);
+                    $i++;
+                }
+                $student["workshops"] = $workshops;
+            }
             $retval = utils::savestudent($student,$con);
 
             if(! $retval ) {
                $error = var_dump(mysql_error());
             } else {
-               $student["updated"] = "Saved your data at " . date("Y-m-d h:i:sa"); 
+               $student["saved"] = true;
             }
 
-        } 
+        }
+
+        utils::enrich2($student); 
         
 
 

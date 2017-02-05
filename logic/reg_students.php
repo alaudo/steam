@@ -68,11 +68,9 @@
                             </div>
                             </div>
                             <br>
-                            <div id="success">
                             <?php
-                                   var_dump($student);
+                                // echo("<div>" . var_dump($student) . "</div>");
                             ?>
-                            </div>
 
                             <div class="row">
                                 <div class="form-group col-xs-12 clearfix">
@@ -86,7 +84,12 @@
                                             ?>                                      
                                         </button>
                                 </div>
-                            </div>';
+                            </div>
+                            <?php
+                                if (isset($student["infomessage"])) {
+                                    echo ("<div class='panel-footer {$student["infomessagecss"]} '> {$student["infomessage"]} </div>");
+                                }
+                            ?>
                     </div>
                               <?php
                                 if (isset($student["showstep2"])) {
