@@ -55,7 +55,7 @@
                 $student["teacherid"] = mysql_result($query,0,"ID");
             }
 
-            if (isset($student["email"])) {
+            if (isset($student["showstep2"])) {
                 // -------  loading parent data ------ 
                 $query = mysql_query("SELECT * FROM Volunteers WHERE Email ='{$student['email']}'" );
                 // if email is not valid, trying to match names
@@ -104,7 +104,7 @@
 
                     if (isset($student["saved"])) {
                         $student["infomessage"] = "Student registration #{$loadid} received on {$lastchange}, data stored.";
-                        $student["infomessagecss"] = "loaded";
+                        $student["infomessagecss"] = "saved";
                     } 
                     
 

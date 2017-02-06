@@ -16,13 +16,13 @@
                                 <div class="row control-group">
                                     <div class="form-group col-xs-4 floating-label-form-group controls <?php utils::ifset($student,'name_first','floating-label-form-group-with-value'); ?>">
                                         <label>Student's first name</label>
-                                        <input type="text" class="form-control"  placeholder="Student's first name" name="student_first" id="student_first" required data-validation-required-message="Please enter student's full name." value="<?php utils::ifexists($student,'name_first'); ?>" >
+                                        <input type="text" class="form-control"  placeholder="Student's first name" name="student_first" id="student_first" required data-validation-required-message="Please enter student's first name." value="<?php utils::ifexists($student,'name_first'); ?>" >
                                         <p class="help-block text-danger"></p>
                                     </div>
 
                                     <div class="form-group col-xs-4 floating-label-form-group controls <?php utils::ifset($student,'name_last','floating-label-form-group-with-value'); ?>">
                                         <label>Student's last name</label>
-                                        <input type="text" class="form-control"  placeholder="Student's last name" name="student_last" id="student_last" required data-validation-required-message="Please enter student's full name." value="<?php utils::ifexists($student,'name_last'); ?>" >
+                                        <input type="text" class="form-control"  placeholder="Student's last name" name="student_last" id="student_last" required data-validation-required-message="Please enter student's last name." value="<?php utils::ifexists($student,'name_last'); ?>" >
                                         <p class="help-block text-danger"></p>
                                     </div>
 
@@ -47,13 +47,13 @@
                                 <div class="row control-group">
                                     <div class="form-group col-xs-4 floating-label-form-group controls <?php utils::ifset($student,'parent_first','floating-label-form-group-with-value'); ?>">
                                         <label>Parent's first name</label>
-                                        <input type="text" class="form-control"  placeholder="Parent's first name" name="parent_first" id="parent_first" required data-validation-required-message="Please enter student's full name." value="<?php utils::ifexists($student,'parent_first'); ?>" >
+                                        <input type="text" class="form-control"  placeholder="Parent's first name" name="parent_first" id="parent_first" required data-validation-required-message="Please enter parent's first name." value="<?php utils::ifexists($student,'parent_first'); ?>" >
                                         <p class="help-block text-danger"></p>
                                     </div>
 
                                     <div class="form-group col-xs-4 floating-label-form-group controls <?php utils::ifset($student,'parent_last','floating-label-form-group-with-value'); ?>">
                                         <label>Parent's last name</label>
-                                        <input type="text" class="form-control"  placeholder="Parent's last name" name="parent_last" id="parent_last" required data-validation-required-message="Please enter student's full name." value="<?php utils::ifexists($student,'parent_last'); ?>" >
+                                        <input type="text" class="form-control"  placeholder="Parent's last name" name="parent_last" id="parent_last" required data-validation-required-message="Please enter parent's last name." value="<?php utils::ifexists($student,'parent_last'); ?>" >
                                         <p class="help-block text-danger"></p>
                                     </div>
                                 </div>
@@ -101,3 +101,20 @@
             </div>        
        </div>
     </section>
+    <script>
+    $(function() {
+
+    $("#registerForm input,#registerForm textarea").jqBootstrapValidation({
+        preventSubmit: true,
+        submitError: function($form, event, errors) {
+            // additional error messages or events
+        },
+        submitSuccess: function($form, event) {
+            // Prevent spam click and default submit behaviour
+            $("#btnSubmit").attr("disabled", true);
+            event.preventDefault();
+        }
+    });
+    }
+    );
+    </script>
