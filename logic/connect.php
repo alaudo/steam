@@ -9,7 +9,7 @@
         $connectstr_dbusername = '';
         $connectstr_dbpassword = '';
 
-        $local = false;
+        $local = true;
         $con = null;
         $error = "";
 
@@ -76,6 +76,7 @@
 
             if(! $retval ) {
                $error = var_dump(mysql_error());
+               echo($error);
             } else {
                $student["saved"] = true;
             }
