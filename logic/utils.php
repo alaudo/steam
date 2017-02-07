@@ -43,8 +43,14 @@
 
             $student["ip"] = $_SERVER['REMOTE_ADDR'];
 
-            if (isset($student["email"]) && isset($student["name_first"]) && isset($student["name_last"])) {
+            if (isset($student["email"]) && !empty($student["email"]) && 
+              isset($student["name_first"]) && !empty($student["email"]) && isset($student["name_last"] && !empty($student["email"]) && )) {
                 $student["showstep2"] = true;
+            } else 
+            {
+                        $student["infomessage"] = "Please, fill in complete data to proceed.";
+                        $student["infomessagecss"] = "created";
+                        return;
             }
 
             if (isset($student["class"])) {

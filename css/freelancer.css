@@ -526,7 +526,18 @@ fieldset[disabled] .btn-success.active {
     color: white;
 }
 
+ /* Validation classes */
 
+.error .form-control {
+  border-color: #b94a48;
+  border-width: 1px;
+  border-style: solid;
+ }
+
+.help-block {
+  color: #b94a48;
+  clear:both;
+}
 
  /* jQueryUI Sortable */
 
