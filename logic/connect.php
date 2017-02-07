@@ -4,23 +4,24 @@
         // including utils
         require_once("utils.php");
 
+        $connectstr_dbhost = '';
+        $connectstr_dbname = '';
+        $connectstr_dbusername = '';
+        $connectstr_dbpassword = '';
+
         $local = false;
         $con = null;
+        $error = "";
 
         if ($local) {
 
-            $username="phpreader";
-            $password="ReadOnly1";
-            $database="Laurel";
-            $error = "";
-            
-            $con = mysql_connect("MYSQLCONNSTR_localdb",$username,$password);
-            @mysql_select_db($database) or die( "Unable to select database");
+            $connectstr_dbusername="phpreader";
+            $connectstr_dbpassword ="ReadOnly1";
+            $connectstr_dbname="laurel";
+            $connectstr_dbhost=localhost;
+
         } else {
-            $connectstr_dbhost = '';
-            $connectstr_dbname = '';
-            $connectstr_dbusername = '';
-            $connectstr_dbpassword = '';
+
 
             foreach ($_SERVER as $key => $value) {
                 if (strpos($key, "MYSQLCONNSTR_localdb") !== 0) {
@@ -28,14 +29,17 @@
                 }
                 
                 $connectstr_dbhost = preg_replace("/^.*Data Source=(.+?);.*$/", "\\1", $value);
-                $connectstr_dbname = preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value);
+                $connectstr_dbname = "laurel"; //preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value);
                 $connectstr_dbusername = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value);
                 $connectstr_dbpassword = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
             }
 
-            $con = mysqli_connect($connectstr_dbhost, $connectstr_dbusername, $connectstr_dbpassword,$connectstr_dbname);
+            //$con = mysqli_connect($connectstr_dbhost, $connectstr_dbusername, $connectstr_dbpassword,$connectstr_dbname);
 
         }
+
+        $con = mysql_connect($connectstr_dbhost,$connectstr_dbusername,$connectstr_dbpassword);
+        @mysql_select_db($connectstr_dbname) or die( "Unable to select database");
         mysql_query("set names 'utf8'");
 
         // trying to get data from post
