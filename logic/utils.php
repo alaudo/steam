@@ -43,8 +43,9 @@
 
             $student["ip"] = $_SERVER['REMOTE_ADDR'];
 
-            if (isset($student["email"]) && !empty($student["email"]) && 
-              isset($student["name_first"]) && !empty($student["email"]) && isset($student["name_last"] && !empty($student["email"]) && )) {
+            if (isset($student["email"]) && !empty($student["email"]) && isset($student["name_first"]) && !empty($student["email"]) && isset($student["name_last"]) && !empty($student["email"])
+                && isset($student["class"]) && $student["class"] != "-1") {
+
                 $student["showstep2"] = true;
             } else 
             {
@@ -63,7 +64,7 @@
 
             if (isset($student["showstep2"])) {
                 // -------  loading parent data ------ 
-                $query = mysql_query("SELECT * FROM Volunteers WHERE Email ='{$student['email']}'" );
+                $query = mysql_query("SELECT * FROM Volunteers WHERE Email ='{$student['email']}' AND Grade = '{$student['grade']}'" );
                 // if email is not valid, trying to match names
                 if (mysql_numrows($query) < 1) $query = mysql_query("SELECT * FROM Volunteers WHERE Grade ='" . $student["grade"] . "' AND First='" . $student["parent_first"] ."' AND Last ='". $student["parent_last"] ."'" );
 
@@ -141,7 +142,7 @@
             }
         }
 
-        public static function getworkshops($grade, $selected) {
+        public static function getworkshops($grade, $selected = null) {
             $workshops = array();
             $isseparator = false;
             $ids = array();

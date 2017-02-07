@@ -69,7 +69,7 @@
                             </div>
                             <br>
                             <?php
-                                // echo("<div>" . var_dump($student) . "</div>");
+                               // echo("<div>" . var_dump($student) . "</div>");
                             ?>
 
                             <div class="row">

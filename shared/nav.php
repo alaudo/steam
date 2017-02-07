@@ -15,15 +15,9 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="students.php">Students</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="volonteers.php">Volonteers</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="contact.php">Contact</a>
-                    </li>
+                    <!--<li class="page-scroll">
+                        <a href="students.php">Register a student</a>
+                    </li>-->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

@@ -53,7 +53,9 @@
 
         }
 
-        utils::enrich2($student); 
+        if (isset($student["showstep2"])) {
+            utils::enrich2($student); 
+        } 
         
 
 
