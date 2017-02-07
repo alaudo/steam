@@ -4,13 +4,27 @@
         // including utils
         require_once("utils.php");
 
-        $username="phpreader";
-        $password="ReadOnly1";
-        $database="Laurel";
-        $error = "";
+        $connectstr_dbhost = '';
+        $connectstr_dbname = '';
+        $connectstr_dbusername = '';
+        $connectstr_dbpassword = '';
+
+        foreach ($_SERVER as $key => $value) {
+            if (strpos($key, "MYSQLCONNSTR_localdb") !== 0) {
+                continue;
+            }
+            
+            $connectstr_dbhost = preg_replace("/^.*Data Source=(.+?);.*$/", "\\1", $value);
+            $connectstr_dbname = "laurel"; // preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value);
+            $connectstr_dbusername = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value);
+            $connectstr_dbpassword = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
+        }
+
+        $con = mysqli_connect($connectstr_dbhost, $connectstr_dbusername, $connectstr_dbpassword,$connectstr_dbname);
+
         
-        $con = mysql_connect(localhost,$username,$password);
-        @mysql_select_db($database) or die( "Unable to select database");
+        // $con = mysql_connect("MYSQLCONNSTR_localdb",$username,$password);
+        // @mysql_select_db($database) or die( "Unable to select database");
         mysql_query("set names 'utf8'");
 
         // trying to get data from post
