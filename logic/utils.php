@@ -199,8 +199,8 @@
             $w = array();
             $w["id"] = "0";
             $w["grade"] = "0";
-            $w["title"] = "No more workshops ### (workshops separator)";
-            $w["description"] = "Drag all workshops you want to attend above this separator. This element should be after the last workshop you would like to attend. All workshops below this elements will be discarded from your choice.";
+            $w["title"] = "### No more workshops ###";
+            $w["description"] = "Drag all workshops you want to attend above this separator in your preference order. The most wanted workshop should be on top. Only first six workshops will count. All workshops below will be discarded from your choice.";
             $w["css"] = "panel-default";
             return $w;
         }       

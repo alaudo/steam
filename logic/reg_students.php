@@ -14,19 +14,19 @@
                         <div id="collapseStepOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                             <div class="panel-body">
                                 <div class="row control-group">
-                                    <div class="form-group col-xs-4 floating-label-form-group controls <?php utils::ifset($student,'name_first','floating-label-form-group-with-value'); ?>">
+                                    <div class="form-group col-sm-4 floating-label-form-group controls <?php utils::ifset($student,'name_first','floating-label-form-group-with-value'); ?>">
                                         <label>Student's first name</label>
                                         <input type="text" class="form-control"  placeholder="Student's first name" name="student_first" id="student_first" required data-validation-required-message="Please enter student's first name." value="<?php utils::ifexists($student,'name_first'); ?>" >
                                         
                                     </div>
 
-                                    <div class="form-group col-xs-4 floating-label-form-group controls <?php utils::ifset($student,'name_last','floating-label-form-group-with-value'); ?>">
+                                    <div class="form-group col-sm-4 floating-label-form-group controls <?php utils::ifset($student,'name_last','floating-label-form-group-with-value'); ?>">
                                         <label>Student's last name</label>
                                         <input type="text" class="form-control"  placeholder="Student's last name" name="student_last" id="student_last" required data-validation-required-message="Please enter student's last name." value="<?php utils::ifexists($student,'name_last'); ?>" >
                                         
                                     </div>
 
-                                    <div class="form-group col-xs-4 floating-label-form-group controls <?php utils::ifset($student,'class','floating-label-form-group-with-value'); ?>">
+                                    <div class="form-group col-sm-4 floating-label-form-group controls <?php utils::ifset($student,'class','floating-label-form-group-with-value'); ?>">
                                         <label>Class and teacher</label>
 
                                         <?php
@@ -45,13 +45,13 @@
                                     </div>
                                 </div>
                                 <div class="row control-group">
-                                    <div class="form-group col-xs-4 floating-label-form-group controls <?php utils::ifset($student,'parent_first','floating-label-form-group-with-value'); ?>">
+                                    <div class="form-group col-sm-4 floating-label-form-group controls <?php utils::ifset($student,'parent_first','floating-label-form-group-with-value'); ?>">
                                         <label>Parent's first name</label>
                                         <input type="text" class="form-control"  placeholder="Parent's first name" name="parent_first" id="parent_first" required data-validation-required-message="Please enter parent's first name." value="<?php utils::ifexists($student,'parent_first'); ?>" >
                                         
                                     </div>
 
-                                    <div class="form-group col-xs-4 floating-label-form-group controls <?php utils::ifset($student,'parent_last','floating-label-form-group-with-value'); ?>">
+                                    <div class="form-group col-sm-4 floating-label-form-group controls <?php utils::ifset($student,'parent_last','floating-label-form-group-with-value'); ?>">
                                         <label>Parent's last name</label>
                                         <input type="text" class="form-control"  placeholder="Parent's last name" name="parent_last" id="parent_last" required data-validation-required-message="Please enter parent's last name." value="<?php utils::ifexists($student,'parent_last'); ?>" >
                                         
@@ -59,11 +59,15 @@
                                 </div>
 
                                 <div class="row control-group">
-                                    <div class="form-group col-xs-12 floating-label-form-group controls <?php utils::ifset($student,'email','floating-label-form-group-with-value'); ?>">
+                                    <div class="form-group col-sm-12 floating-label-form-group controls <?php utils::ifset($student,'email','floating-label-form-group-with-value'); ?>">
                                         <label>Contact Email</label>
                                         <input type="email" class="form-control" placeholder="Contact Email" id="email" name="email" required data-validation-required-message="Please enter your email address, it will be used as your password to access data." value="<?php utils::ifexists($student,'email'); ?>" >
                                         
                                     </div>
+                                </div>
+
+                                <div class="alert alert-warning" role="alert">
+                                The email is used as password to protect your data and allow you to edit it later by providing it. We will not send you anything to this email. You can provide any arbitrary string here.
                                 </div>
                             </div>
                             </div>
@@ -73,13 +77,13 @@
                             ?>
 
                             <div class="row">
-                                <div class="form-group col-xs-12 clearfix">
-                                    <button type="submit" name="load" id="s" class="btn btn-warning btn-lg inbutton pull-right">
+                                <div class="form-group col-sm-12 clearfix">
+                                    <button type="submit" name="load" id="s" class="btn btn-warning btn-lg inbutton" style="margin-left:10px">
                                             <?php
                                                 if (!isset($student["showstep2"])) {
                                                     echo 'Login or register';
                                                 } else {
-                                                    echo 'Reload data';
+                                                    echo 'Retry login';
                                                 }
                                             ?>                                      
                                         </button>

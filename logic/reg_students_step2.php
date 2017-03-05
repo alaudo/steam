@@ -9,6 +9,15 @@
     </div>
     <div id="collapseStep2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
+
+        <div class="row control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls <?php utils::ifset($student,'allergy','floating-label-form-group-with-value'); ?>">
+                <label>Allergies and conditions</label>
+                <input type="email" class="form-control" placeholder="List known allergies or conditions" id="allergy" name="allergy"  value="<?php utils::ifexists($student,'allergy'); ?>" >
+                <p class="help-block text-danger"></p>
+            </div>
+        </div>
+       
         <?php
             if ($student["is_parent_workshop"]) {
                 include("reg_students_parentworkshop.php");
@@ -17,19 +26,12 @@
             }
 
         ?>
-        <div class="row control-group">
-            <div class="form-group col-xs-12 floating-label-form-group controls <?php utils::ifset($student,'allergy','floating-label-form-group-with-value'); ?>">
-                <label>Allergies and conditions</label>
-                <input type="email" class="form-control" placeholder="List known allergies or conditions" id="allergy" name="allergy"  value="<?php utils::ifexists($student,'allergy'); ?>" >
-                <p class="help-block text-danger"></p>
-            </div>
-        </div>
+        <br /> 
         <?php
         if (isset($student["workshops"])) {
             include("reg_students_workshops.php");
         }           
-        ?>  
-
+        ?> 
 
     </div>
 </div>
