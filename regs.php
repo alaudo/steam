@@ -14,7 +14,7 @@
     <?php
         include 'shared\nav.php';
         include 'logic\connect.php';
-        include 'logic\show_students.php';
+        include 'logic\show_regs.php';
         include 'shared\footer.php';
         include 'shared\scripts.php';d
     ?>
