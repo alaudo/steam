@@ -17,7 +17,7 @@
                                 echo '  </div>';
                                 echo '</div>';
 
-                            }
+                             }
                     ?>
                     <input type="hidden" id="workshopsorder" name="workshopsorder" value="" />
 
