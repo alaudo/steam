@@ -105,22 +105,14 @@
             </div>        
        </div>
     </section>
-    <!--<script>
-    $(function() {
+    <script>
+            $(document).ready(function() {
+                var isMobile = window.matchMedia("only screen and (max-width: 760px)");
 
-    $("#registerForm input,#registerForm textarea").jqBootstrapValidation({
-        preventSubmit: true,
-        // autoAdd: {helpBlocks:true;},
-        submitError: function($form, event, errors) {
-            // additional error messages or events
-        },
-        submitSuccess: function($form, event) {
-            // Prevent spam click and default submit behaviour
-            $("#load").attr("disabled", true);
-            // event.preventDefault();
-            $form.submit();
-        }
-    });
-    }
-    );
-    </script>-->
+                if (isMobile.matches) {
+                       $('.selectpicker').selectpicker('mobile');
+                }
+
+            });
+
+    </script>

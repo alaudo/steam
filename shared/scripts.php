@@ -8,7 +8,7 @@
 
     <!-- Plugin Bootstrap select -->
     <script src="js/bootstrap-select.min.js"></script>
-    <script src="js/select-en_US.min.js"></script>
+    <!--<script src="js/select-en_US.min.js"></script>-->
     
 
     <!-- Contact Form JavaScript -->
