@@ -60,14 +60,14 @@
 
                                 <div class="row control-group">
                                     <div class="form-group col-sm-12 floating-label-form-group controls <?php utils::ifset($student,'email','floating-label-form-group-with-value'); ?>">
-                                        <label>Contact Email</label>
+                                        <label>Contact Email or Keyword</label>
                                         <input type="email" class="form-control" placeholder="Contact Email" id="email" name="email" required data-validation-required-message="Please enter your email address, it will be used as your password to access data." value="<?php utils::ifexists($student,'email'); ?>" >
                                         
                                     </div>
                                 </div>
 
                                 <div class="alert alert-warning" role="alert">
-                                The email is used as password to protect your data and allow you to edit it later by providing it. We will not send you anything to this email. You can provide any arbitrary string here.
+                                Remember this email address to edit your workshop preferences later. We will not send any emails to this address. You may use other keyword of your choice.
                                 </div>
                             </div>
                             </div>
