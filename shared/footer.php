@@ -13,13 +13,13 @@
                             
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>Contact</h3>
-                        <p>For any problems, questions or critisims, please send a mail to <a href="mailto:steam@laurelpto.org">steam@laurel.org</a> .</p>
+                        <h3>Contact:</h3>
+                        <p>steam&#64laurel.org</p>
                     
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>About STEAM Fair</h3>
-                        <p>STEAM Fair is an annual event that is organized by parent volonteers of <a href="http://district.mpcsd.org/Domain/9">Laurel School</a> where students can learn some aspects of STEAM through hands-on workshops.</p>
+                        <p>STEAM Fair is a PTO funded event for <a href="http://district.mpcsd.org/Domain/9">Laurel</a> students to participate in parent-led hands-on workshops on Science, Technology, Engineering, Art and Mathematics. </p>
 
                     </div>
                 </div>
