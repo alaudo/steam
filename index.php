@@ -14,7 +14,12 @@
     <?php
         include 'shared\nav.php';
         include 'logic\connect.php';
-        include 'logic\reg_students.php';
+        if (isset($student["save"])) {
+            include 'logic\confirmation.php';
+        } else {
+            include 'logic\reg_students.php';
+        }
+        
         include 'shared\footer.php';
         include 'shared\scripts.php';
     ?>

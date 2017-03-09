@@ -61,7 +61,7 @@
                                 <div class="row control-group">
                                     <div class="form-group col-sm-12 floating-label-form-group controls <?php utils::ifset($student,'email','floating-label-form-group-with-value'); ?>">
                                         <label>Contact Email or Keyword</label>
-                                        <input type="email" class="form-control" placeholder="Contact Email" id="email" name="email" required data-validation-required-message="Please enter your email address, it will be used as your password to access data." value="<?php utils::ifexists($student,'email'); ?>" >
+                                        <input type="email" class="form-control" placeholder="Contact Email or Keyword" id="email" name="email" required data-validation-required-message="Please enter your email address, it will be used as your password to access data." value="<?php utils::ifexists($student,'email'); ?>" >
                                         
                                     </div>
                                 </div>
