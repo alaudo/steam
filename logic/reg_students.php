@@ -30,7 +30,7 @@
                                         <label>Class and teacher</label>
 
                                         <?php
-                                                $sql="SELECT ID, CONCAT('Grade ', Grade, ': ', Teacher) AS Class FROM `Classroom` ORDER BY Class ";
+                                                $sql="SELECT ID, CONCAT(CONCAT(Grade, CASE WHEN Grade = 'K' THEN 'indergarden' WHEN Grade = '1' THEN 'st grade' WHEN Grade = '2' THEN 'nd grade' WHEN Grade = '3' THEN 'rd grade' ELSE 'th grade' END), ' : ', Teacher) AS Class FROM `Classroom` ORDER BY Class";
                                                 $result = mysql_query($sql);
 
                                                 echo "<select name='class' class='selectpicker' data-live-search='true' placeholder='Class and teacher' data-validation-required-message='Please enter student's class.' >";
