@@ -170,7 +170,7 @@
                 $isseparator = true;
             }
             
-            $query = mysql_query("SELECT ID FROM Workshop WHERE Grade = {$grade} " . $condition);
+            $query = mysql_query("SELECT ID FROM Workshop WHERE Grade = '{$grade}' " . $condition);
 
 
             while ($row = mysql_fetch_array($query)) {

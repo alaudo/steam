@@ -9,7 +9,9 @@
         $connectstr_dbusername = '';
         $connectstr_dbpassword = '';
 
-        $local = true;
+
+        $local = strpos($_SERVER['HTTP_HOST'], 'localhost') !== false;
+
         $con = null;
         $error = "";
 

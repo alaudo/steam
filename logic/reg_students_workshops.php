@@ -3,7 +3,7 @@
                 <div class="panel-heading">Workshop preference order (most wanted on top)</div>
                 <div class="panel-body">
                     <div class="alert alert-warning" role="alert">
-                    Students <b>from K to 2nd</b> grade will participate in <b>4</b> different workshops. Students from <b>3rd to 5th</b> grade will participate in <b>3 different workshops</b>.  Please choose the top preferences.
+                    Students <b>from K to 2nd</b> grade will participate in <b>4</b> different workshops. Students from <b>3rd to 5th</b> grade will participate in <b>3 different workshops</b>.  Please select your top 6 choices.
                     </div>
                     <div id="sortable" class="row">
 

@@ -1,6 +1,9 @@
         <div class="row">
             <div class="form-group col-sm-12">
-                <label class="checkbox-inline"><input name="withmychild" id="withmychild" type="checkbox" <?php utils::ifset($student,'is_parent_workshop','checked'); ?> >I want that my child takes part in the workshop I help with.</label>
+                <label class="checkbox-inline"><input name="withmychild" id="withmychild" type="checkbox" <?php utils::ifset($student,'is_parent_workshop','checked'); ?> >I am volunteering and I want my child to be in my workshop.</label>
+            </div>
+            <div class="alert alert-warning" role="alert">
+            Please rank your workshop as Choice #1 if you want your child in your workshop.
             </div>
         </div>
         <div class="panel-group" id="parent_workshop_panel" role="tablist" aria-multiselectable="true">
