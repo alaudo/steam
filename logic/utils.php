@@ -49,7 +49,7 @@
                 $student["showstep2"] = true;
             } else 
             {
-                        $student["infomessage"] = "Please, fill in complete data to proceed.";
+                        $student["infomessage"] = "Complete all fields to proceed.";
                         $student["infomessagecss"] = "created";
                         return;
             }

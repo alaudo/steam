@@ -3,7 +3,7 @@
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
         <a role="button" data-toggle="collapse" data-parent="#step2" href="#collapseStep2" aria-expanded="false" aria-controls="collapseStep2">
-          <span class="glyphicon glyphicon-chevron-down pull-right"></span> Step 2: Workshop selection
+          <span class="glyphicon glyphicon-chevron-down pull-right"></span> Step 2: Select and rank workshops
         </a>
       </h4>
     </div>
