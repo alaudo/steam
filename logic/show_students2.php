@@ -1,6 +1,6 @@
     <section id="portfolio">
         <div class="">
-            <div class="row">
+            <div class="">
                 <div class="">
                     <?php
                     $query = "SELECT S.Grade, Teacher, StudentLast, StudentFirst 
