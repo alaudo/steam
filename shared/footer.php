@@ -14,7 +14,7 @@
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Contact:</h3>
-                        <p>steam&#64laurel.org</p>
+                        <p>steam&#64laurelpto.org</p>
                     
                     </div>
                     <div class="footer-col col-md-4">
